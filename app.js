@@ -26,6 +26,28 @@ let min = 1 ,
                 guessesInput.style.borderColor = 'green';
 
                 setMessage(`${winningNum} is correct, YOU WIN!`,'green');
+            }else{
+                guessesLeft -=1;
+
+                if(guessesLeft === 0){
+
+                guessesInput.disabled = true;
+
+                guessesInput.style.borderColor = 'red';
+
+                setMessage(`Game over , you lost.The correct number was ${winningNum}`,'red');
+
+
+                }else{
+                    guessesInput.style.borderColor = 'red';
+
+                    guessesInput.value = '';
+
+                    setMessage(`${guess} is not correct, ${guessesLeft} guesses left`,'red');
+
+                }
+
+                
             }
 
         });
