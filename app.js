@@ -21,21 +21,24 @@ let min = 1 ,
   
             }
             if(guess === winningNum){
-                guessesInput.disabled = true;
 
-                guessesInput.style.borderColor = 'green';
+                gameOver(true, `${winningNum} is correct, YOU WIN!`);
+                // guessesInput.disabled = true;
 
-                setMessage(`${winningNum} is correct, YOU WIN!`,'green');
+                // guessesInput.style.borderColor = 'green';
+
+                // setMessage(`${winningNum} is correct, YOU WIN!`,'green');
             }else{
                 guessesLeft -=1;
 
                 if(guessesLeft === 0){
+                    gameOver(false,`Game over , you lost.The correct number was ${winningNum}`);
 
-                guessesInput.disabled = true;
+                // guessesInput.disabled = true;
 
-                guessesInput.style.borderColor = 'red';
+                // guessesInput.style.borderColor = 'red';
 
-                setMessage(`Game over , you lost.The correct number was ${winningNum}`,'red');
+                // setMessage(`Game over , you lost.The correct number was ${winningNum}`,'red');
 
 
                 }else{
@@ -51,6 +54,19 @@ let min = 1 ,
             }
 
         });
+
+        function gameOver(won,msg){
+
+            let color;
+            won === true ? color = 'green' : color = 'red';
+
+            guessesInput.disabled = true;
+
+            guessesInput.style.borderColor = 'green';
+
+            setMessage(msg);
+
+        }
 
         function setMessage(msg,color){
             message.style.color = color;
